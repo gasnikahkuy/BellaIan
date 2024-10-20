@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ian & Bella</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            background: linear-gradient(135deg, #1a1a1a 0%, #2c3e50 100%);
+            padding: 20px;
+            color: white;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 800px;
+            text-align: center;
+        }
+
+        .clock {
+            font-size: 2em;
+            margin-bottom: 30px;
+            font-family: 'Courier New', Courier, monospace;
+            background: rgba(0, 0, 0, 0.3);
+            padding: 10px 20px;
+            border-radius: 10px;
+            letter-spacing: 2px;
+        }
+
+        #welcome-message {
+            color: white;
+            margin-bottom: 40px;
+            font-size: 1.5em;
+            line-height: 1.5;
+            padding: 20px;
+            background: rgba(0, 0, 0, 0.2);
+            border-radius: 15px;
+            animation: fadeIn 1s ease-in;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        .button-container {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            width: 100%;
+            margin-top: 30px;
+        }
+
+        .button {
+            padding: 15px 30px;
+            font-size: 1.2em;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            text-decoration: none;
+            color: white;
+            font-weight: bold;
+        }
+
+        .button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(255, 255, 255, 0.2);
+        }
+
+        .silver {
+            background: linear-gradient(135deg, #8e9eab 0%, #606c88 100%);
+        }
+
+        .gold {
+            background: linear-gradient(135deg, #f1c40f 0%, #f39c12 100%);
+        }
+
+        .platinum {
+            background: linear-gradient(135deg, #bdc3c7 0%, #2c3e50 100%);
+        }
+
+        .wedding {
+            background: linear-gradient(135deg, #ff6b6b 0%, #ee0979 100%);
+        }
+
+        .files {
+            background: linear-gradient(135deg, #4CAF50 0%, #2E7D32 100%);
+        }
+
+        @media (max-width: 480px) {
+            #welcome-message {
+                font-size: 1.2em;
+                padding: 15px;
+            }
+
+            .button {
+                padding: 12px 24px;
+                font-size: 1.1em;
+            }
+
+            .clock {
+                font-size: 1.5em;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div id="clock" class="clock">00:00:00</div>
+        <div id="welcome-message"></div>
+        <div class="button-container">
+            <a href="https://script.google.com/macros/s/AKfycbx524Af1F_7HHYSIHMu3roLuphMUhAbf1Q-rLM80saC2uy3gE8QhaHcSnvhgbF975N1/exec?pli=1" class="button silver" target="_blank">TABUNGAN SILVER</a>
+            <a href="https://script.google.com/macros/s/AKfycbzn2CvTJka6CkfOV06fXl8AWu3RIP2ZWzxlHDI6NybL8YoEsOS_NWAUkshTzVH7AsxQ/exec" class="button gold" target="_blank">REKENING GOLD</a>
+            <a href="https://script.google.com/macros/s/AKfycbxH1q5S4cZ1Oxk1CLNfu4_m840NkzvhEYU7Rvy8FUWpK3sc2Les3r4Z-2sSRHlOJxH_/exec" class="button platinum" target="_blank">REKENING PLATINUM</a>
+            <a href="https://docs.google.com/spreadsheets/d/1O6HVsZnjP1oi5CVBuvkzW6CYi5w2UWVl3ai-cY4qznk/edit?gid=275164353#gid=275164353" class="button wedding" target="_blank">WEDDING BUDGETING PLAN</a>
+            <a href="https://drive.google.com/drive/folders/1hEYKCboj4CdkFTDkCyLdZIW4Cb6A-9nK" class="button files" target="_blank">ALL FILES FOLDER</a>
+        </div>
+    </div>
+
+    <script>
+        function updateClock() {
+            const now = new Date();
+            const hours = String(now.getHours()).padStart(2, '0');
+            const minutes = String(now.getMinutes()).padStart(2, '0');
+            const seconds = String(now.getSeconds()).padStart(2, '0');
+            document.getElementById('clock').textContent = `${hours}:${minutes}:${seconds}`;
+        }
+
+        function getWelcomeMessage() {
+            const currentHour = new Date().getHours();
+            let message = "";
+            if (currentHour >= 5 && currentHour < 7) {
+                message = "Good morning, Ian & Bella! 🌅 Rise and shine! Drink a glass of water to start your day off right. Let's make today amazing!";
+            } else if (currentHour >= 7 && currentHour < 9) {
+                message = "Good morning! ☀️ Stay focused and remember your goals. You're both capable of achieving great things today!";
+            } else if (currentHour >= 9 && currentHour < 12) {
+                message = "Mid-morning check-in! 💪 Keep up the great work, stay hydrated, and don't forget to take short breaks to recharge your mind!";
+            } else if (currentHour >= 12 && currentHour < 14) {
+                message = "Lunchtime! 🍽️ Make sure to hydrate! You're doing fantastic—let's keep pushing toward those dreams!";
+            } else if (currentHour >= 14 && currentHour < 17) {
+                message = "Afternoon hustle! 🌟 Stay focused on your tasks. Remember, every little step counts toward your goals!";
+            } else if (currentHour >= 17 && currentHour < 19) {
+                message = "Evening motivation! 🌇 As you wrap up your day, reflect on what you've accomplished. Keep each other inspired and hydrated!";
+            } else if (currentHour >= 19 && currentHour < 22) {
+                message = "Good evening! 🌙 It's time to relax, but don't lose sight of your dreams! Celebrate today's wins and keep the momentum going!";
+            } else {
+                message = "Good night, Ian & Bella! 🌜 Rest well and dream big. Tomorrow is a new opportunity to stay focused on your journey. Sweet dreams!";
+            }
+            return message;
+        }
+
+        function updateWelcomeMessage() {
+            const welcomeElement = document.getElementById("welcome-message");
+            welcomeElement.innerHTML = getWelcomeMessage();
+        }
+
+        // Initial updates
+        updateClock();
+        updateWelcomeMessage();
+
+        // Set intervals for updates
+        setInterval(updateClock, 1000);
+        setInterval(updateWelcomeMessage, 60000); // Update welcome message every minute
+    </script>
+</body>
+</html>
